@@ -1,0 +1,1 @@
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(e){const t=document.querySelector(this.getAttribute("href"));t&&(e.preventDefault(),t.scrollIntoView({behavior:"smooth"}))})});console.log("Rania Meguelati – CV")
