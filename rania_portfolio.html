@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rania Ibtihal Meguellati — Journalist & Radio Presenter</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0c09;
+    --cream: #f5f0e8;
+    --warm: #e8dfc8;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --amber: #b8732a;
+    --rust: #8b3a1a;
+    --muted: #6b6355;
+    --rule: #c9a84c44;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: linear-gradient(to bottom, rgba(14,12,9,0.98) 0%, transparent 100%);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.4s, background 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(14,12,9,0.97);
+    border-bottom-color: var(--rule);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--warm);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    position: relative;
+    padding: 6rem 3rem 4rem;
+    overflow: hidden;
+  }
+
+  /* Animated radio wave background */
+  .waves-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+  .wave-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    opacity: 0;
+    animation: ripple 5s ease-out infinite;
+  }
+  .wave-ring:nth-child(1) { width: 200px; height: 200px; animation-delay: 0s; }
+  .wave-ring:nth-child(2) { width: 400px; height: 400px; animation-delay: 0.8s; }
+  .wave-ring:nth-child(3) { width: 600px; height: 600px; animation-delay: 1.6s; }
+  .wave-ring:nth-child(4) { width: 800px; height: 800px; animation-delay: 2.4s; }
+  .wave-ring:nth-child(5) { width: 1000px; height: 1000px; animation-delay: 3.2s; }
+  .wave-ring:nth-child(6) { width: 1200px; height: 1200px; animation-delay: 4s; }
+  @keyframes ripple {
+    0% { transform: scale(0.4); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 0; }
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 860px;
+    animation: fadeUp 1.2s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.8rem;
+    animation: fadeUp 1.2s 0.1s ease both;
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    animation: fadeUp 1.2s 0.2s ease both;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--muted);
+    margin-top: 1.2rem;
+    letter-spacing: 0.06em;
+    animation: fadeUp 1.2s 0.3s ease both;
+  }
+
+  .hero-rule {
+    width: 80px;
+    height: 1px;
+    background: var(--gold);
+    margin: 2.2rem auto;
+    animation: fadeUp 1.2s 0.4s ease both;
+  }
+
+  .hero-tagline {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--warm);
+    max-width: 560px;
+    margin: 0 auto 2.8rem;
+    animation: fadeUp 1.2s 0.5s ease both;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 1.2s 0.6s ease both;
+  }
+
+  .btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    border: 1px solid;
+    transition: all 0.35s ease;
+  }
+  .btn-gold {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink);
+  }
+  .btn-gold:hover { background: var(--gold-light); border-color: var(--gold-light); }
+  .btn-outline {
+    background: transparent;
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .btn-outline:hover { background: var(--gold); color: var(--ink); }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.5;
+    animation: fadeUp 1.2s 0.8s ease both;
+  }
+  .scroll-indicator span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollDown 2s ease-in-out infinite;
+  }
+  @keyframes scrollDown {
+    0%, 100% { transform: scaleY(1); opacity: 0.5; }
+    50% { transform: scaleY(0.6); opacity: 1; }
+  }
+
+  /* ─── SECTION COMMON ─── */
+  section { padding: 6rem 3rem; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 3rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold-light); }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--ink); border-top: 1px solid var(--rule); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-photo-wrap {
+    position: relative;
+  }
+  .photo-frame {
+    position: relative;
+    display: inline-block;
+  }
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    top: -12px; left: -12px;
+    right: 12px; bottom: 12px;
+    border: 1px solid var(--gold);
+    opacity: 0.5;
+    z-index: 0;
+  }
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    top: 12px; left: 12px;
+    right: -12px; bottom: -12px;
+    background: var(--amber);
+    opacity: 0.12;
+    z-index: 0;
+  }
+  .photo-frame img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 320px;
+    display: block;
+    filter: sepia(15%) contrast(1.05);
+    object-fit: cover;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 2rem;
+  }
+  .stat-box {
+    background: var(--ink);
+    padding: 1.2rem;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  .about-text p {
+    font-size: 1.15rem;
+    color: var(--warm);
+    margin-bottom: 1.4rem;
+    font-weight: 300;
+  }
+
+  .lang-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+  .lang-chip {
+    border: 1px solid var(--rule);
+    padding: 0.4rem 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .lang-chip .level {
+    color: var(--gold);
+    font-size: 0.6rem;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  #experience { background: #0b0906; border-top: 1px solid var(--rule); }
+
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+
+  .timeline-item {
+    padding-left: 3rem;
+    padding-bottom: 4rem;
+    position: relative;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  .timeline-item.visible { opacity: 1; transform: none; }
+
+  .timeline-dot {
+    position: absolute;
+    left: -5px;
+    top: 6px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 16px var(--gold);
+  }
+
+  .tl-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .tl-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.2rem;
+  }
+  .tl-org {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .tl-duties {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .tl-duties li {
+    padding-left: 1.4rem;
+    position: relative;
+    font-size: 1rem;
+    color: var(--warm);
+    font-weight: 300;
+  }
+  .tl-duties li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    opacity: 0.6;
+    font-size: 0.9rem;
+  }
+
+  /* ─── SKILLS ─── */
+  #skills { background: var(--ink); border-top: 1px solid var(--rule); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .skill-card {
+    background: var(--ink);
+    padding: 2rem 1.8rem;
+    transition: background 0.35s;
+  }
+  .skill-card:hover { background: rgba(201,168,76,0.04); }
+  .skill-icon {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+  .skill-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+  .skill-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ─── PORTFOLIO / VIDEOS ─── */
+  #portfolio { background: #0b0906; border-top: 1px solid var(--rule); }
+
+  .portfolio-intro {
+    font-size: 1.15rem;
+    color: var(--warm);
+    font-style: italic;
+    max-width: 600px;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .video-card {
+    border: 1px solid var(--rule);
+    background: var(--ink);
+    overflow: hidden;
+    transition: border-color 0.35s, transform 0.35s;
+    cursor: pointer;
+  }
+  .video-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+  }
+
+  .video-thumb {
+    position: relative;
+    aspect-ratio: 16/9;
+    background: #141210;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .video-thumb video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(14,12,9,0.5) 0%, rgba(201,168,76,0.1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.35s;
+  }
+  .video-card:hover .video-overlay { background: rgba(14,12,9,0.2); }
+
+  .play-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, background 0.3s;
+  }
+  .video-card:hover .play-btn { transform: scale(1.12); background: var(--gold-light); }
+  .play-btn svg { fill: var(--ink); margin-left: 3px; }
+
+  /* Placeholder for videos not yet added */
+  .video-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    color: var(--muted);
+  }
+  .video-placeholder .ph-icon { font-size: 2rem; }
+  .video-placeholder .ph-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .video-info { padding: 1.2rem 1.4rem; }
+  .video-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .video-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--cream);
+  }
+  .video-source {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 0.2rem;
+  }
+
+  /* GitHub notice */
+  .github-notice {
+    margin-top: 3rem;
+    border: 1px dashed var(--rule);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .github-notice .gh-icon { font-size: 2rem; flex-shrink: 0; }
+  .github-notice p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .github-notice strong { color: var(--gold); font-style: normal; }
+
+  /* ─── EDUCATION ─── */
+  #education { background: var(--ink); border-top: 1px solid var(--rule); }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  .edu-card {
+    border: 1px solid var(--rule);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.35s;
+  }
+  .edu-card:hover { border-color: var(--gold); }
+  .edu-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 60px; height: 60px;
+    background: radial-gradient(circle at bottom right, rgba(201,168,76,0.12), transparent);
+  }
+  .edu-degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+  }
+  .edu-field {
+    font-style: italic;
+    color: var(--gold-light);
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+  }
+  .edu-school {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .edu-year {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--rule);
+    position: absolute;
+    bottom: 1rem;
+    right: 1.5rem;
+    line-height: 1;
+  }
+
+  .certs-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .certs-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .cert-badge {
+    border: 1px solid var(--gold);
+    padding: 0.5rem 1.2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .thesis-block {
+    margin-top: 3.5rem;
+    border-left: 2px solid var(--gold);
+    padding: 1.5rem 2rem;
+    background: rgba(201,168,76,0.03);
+  }
+  .thesis-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .thesis-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--cream);
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background: #0b0906;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+  }
+  .contact-tagline {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto 3rem;
+    font-weight: 300;
+  }
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 4rem;
+  }
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    transition: opacity 0.3s;
+  }
+  .contact-item:hover { opacity: 0.7; }
+  .contact-item .ci-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .contact-item .ci-value {
+    font-size: 1.05rem;
+    color: var(--cream);
+  }
+
+  .big-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 900;
+    font-style: italic;
+    color: rgba(201,168,76,0.06);
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--ink);
+  }
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .edu-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.8rem; text-align: center; }
+    .hero-cta { flex-direction: column; align-items: center; }
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">R.I.M.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="waves-bg">
+    <div class="wave-ring"></div>
+    <div class="wave-ring"></div>
+    <div class="wave-ring"></div>
+    <div class="wave-ring"></div>
+    <div class="wave-ring"></div>
+    <div class="wave-ring"></div>
+  </div>
+
+  <div class="hero-inner">
+    <p class="hero-eyebrow">✦ Journalist &nbsp;·&nbsp; Radio Presenter &nbsp;·&nbsp; Storyteller ✦</p>
+    <h1 class="hero-name">Rania<br><em>Ibtihal</em><br>Meguellati</h1>
+    <p class="hero-title">Giving voice to the stories that shape our world</p>
+    <div class="hero-rule"></div>
+    <p class="hero-tagline">"Every broadcast is a bridge — between truth and audience, between silence and meaning."</p>
+    <div class="hero-cta">
+      <a href="#portfolio" class="btn btn-gold">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo-wrap reveal">
+        <div class="photo-frame">
+          <!-- Replace src with actual photo path if needed -->
+          <img src="https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/Rania.png" alt="Rania Ibtihal Meguellati" style="width:100%;max-width:320px;display:block;" />
+        </div>
+        <div class="about-stats">
+          <div class="stat-box">
+            <span class="stat-num">3+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">3</span>
+            <span class="stat-label">Languages</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">MSc</span>
+            <span class="stat-label">Mass Comm.</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">2</span>
+            <span class="stat-label">Media Orgs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <div class="section-label reveal">About Me</div>
+        <h2 class="section-title reveal">A Voice <em>Built</em><br>on Truth</h2>
+        <p class="reveal">I'm a Master's graduate in Mass Communication and New Media from the University of Setif 2, Algeria — where I earned high distinction for my research on American public diplomacy and its presence on Algerian television.</p>
+        <p class="reveal reveal-delay-1">My journey in media spans radio broadcasting and print journalism. From hosting live radio segments at ASIA Radio to writing investigative feature stories at KAWALIS Newspaper, I bring the same commitment to every story: accuracy, depth, and human connection.</p>
+        <p class="reveal reveal-delay-2">Based in Doha, Qatar, I am passionate about social issues, cross-cultural storytelling, and the evolving landscape of digital media and podcasting.</p>
+
+        <div class="lang-chips reveal reveal-delay-3">
+          <div class="lang-chip">🇩🇿 Arabic <span class="level">Native</span></div>
+          <div class="lang-chip">🇫🇷 French <span class="level">Fluent</span></div>
+          <div class="lang-chip">🇬🇧 English <span class="level">Conversational</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label reveal">Work Experience</div>
+    <h2 class="section-title reveal">On Air &<br><em>On Record</em></h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="tl-date">2025 — Present</p>
+        <h3 class="tl-role">Journalist Intern</h3>
+        <p class="tl-org">KAWALIS Newspaper — Algeria</p>
+        <ul class="tl-duties">
+          <li>Writing news articles, feature stories, and editorial content for print and digital platforms</li>
+          <li>Producing multimedia content, including field reports and investigative pieces</li>
+          <li>Capturing and editing photos and videos to enhance storytelling</li>
+          <li>Covering events, conducting interviews, and collecting information for reports</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="tl-date">2022 — 2023</p>
+        <h3 class="tl-role">Radio Presenter Intern</h3>
+        <p class="tl-org">ASIA Radio — Algeria</p>
+        <ul class="tl-duties">
+          <li>Hosting radio programs and live segments with engaging presentation skills</li>
+          <li>Conducting on-air and recorded interviews with featured guests</li>
+          <li>Preparing scripts, show outlines, and program content in collaboration with producers</li>
+          <li>Assisting with audio production, scheduling, and program coordination</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label reveal">Expertise</div>
+    <h2 class="section-title reveal">What I <em>Bring</em><br>to the Mic</h2>
+
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <span class="skill-icon">🎙️</span>
+        <div class="skill-name">Radio Broadcasting</div>
+        <p class="skill-desc">Deep knowledge of broadcasting principles, live hosting, and audio production workflows.</p>
+      </div>
+      <div class="skill-card reveal reveal-delay-1">
+        <span class="skill-icon">✍️</span>
+        <div class="skill-name">Scriptwriting & Editing</div>
+        <p class="skill-desc">Crafting compelling scripts, show outlines, and editorial content for broadcast and print.</p>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <span class="skill-icon">🎤</span>
+        <div class="skill-name">Interviewing</div>
+        <p class="skill-desc">Conducting structured and spontaneous interviews across radio, field reporting, and event coverage.</p>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">📰</span>
+        <div class="skill-name">Investigative Journalism</div>
+        <p class="skill-desc">Producing in-depth feature stories, field reports, and data-driven pieces for digital and print media.</p>
+      </div>
+      <div class="skill-card reveal reveal-delay-1">
+        <span class="skill-icon">🎬</span>
+        <div class="skill-name">Video Editing & Photography</div>
+        <p class="skill-desc">Capturing and editing multimedia content to complement and elevate storytelling.</p>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <span class="skill-icon">📡</span>
+        <div class="skill-name">Audience Engagement</div>
+        <p class="skill-desc">Building rapport with audiences across radio, social media, and live events with authenticity.</p>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">🗣️</span>
+        <div class="skill-name">Public Speaking</div>
+        <p class="skill-desc">Commanding presence in live broadcasts, event emceeing, and public discourse.</p>
+      </div>
+      <div class="skill-card reveal reveal-delay-1">
+        <span class="skill-icon">📱</span>
+        <div class="skill-name">Social Media & Digital</div>
+        <p class="skill-desc">Leveraging social media platforms and communication tools to extend media reach and engagement.</p>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <span class="skill-icon">🔬</span>
+        <div class="skill-name">Research & Fact-Checking</div>
+        <p class="skill-desc">Ensuring accuracy and credibility at every stage of the storytelling process.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO / VIDEOS -->
+<section id="portfolio">
+  <div class="container">
+    <div class="section-label reveal">Portfolio</div>
+    <h2 class="section-title reveal">Hear Me <em>In Action</em></h2>
+    <p class="portfolio-intro reveal">A selection of my broadcast work, radio segments, field reports, and media productions.</p>
+
+    <!-- VIDEO LIGHTBOX MODAL -->
+    <div id="videoModal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(10,8,6,0.96);align-items:center;justify-content:center;flex-direction:column;gap:1.2rem;">
+      <button onclick="closeModal()" style="position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:var(--gold);font-size:2rem;cursor:pointer;font-family:'Playfair Display',serif;line-height:1;">✕</button>
+      <div id="modalTitle" style="font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;"></div>
+      <video id="modalVideo" controls playsinline style="max-width:90vw;max-height:78vh;width:100%;border:1px solid var(--rule);background:#000;outline:none;"></video>
+      <div style="display:flex;gap:1.5rem;">
+        <button onclick="prevVideo()" style="background:none;border:1px solid var(--rule);color:var(--warm);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:pointer;transition:border-color 0.3s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--rule)'">← Prev</button>
+        <button onclick="nextVideo()" style="background:none;border:1px solid var(--rule);color:var(--warm);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:pointer;transition:border-color 0.3s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--rule)'">Next →</button>
+      </div>
+    </div>
+
+    <div class="videos-grid">
+      <!-- VIDEO CARD 1 -->
+      <div class="video-card reveal" onclick="openModal(0)">
+        <div class="video-thumb">
+          <video src="https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0039.mp4" preload="metadata" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+          <div class="video-overlay">
+            <div class="play-btn">
+              <svg width="16" height="18" viewBox="0 0 16 18"><path d="M2 1l13 8-13 8V1z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <p class="video-tag">🎙️ Broadcast · Media Work</p>
+          <h3 class="video-title">Segment 01</h3>
+          <p class="video-source">Rania Ibtihal Meguellati</p>
+        </div>
+      </div>
+
+      <!-- VIDEO CARD 2 -->
+      <div class="video-card reveal reveal-delay-1" onclick="openModal(1)">
+        <div class="video-thumb">
+          <video src="https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0040.mp4" preload="metadata" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+          <div class="video-overlay">
+            <div class="play-btn">
+              <svg width="16" height="18" viewBox="0 0 16 18"><path d="M2 1l13 8-13 8V1z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <p class="video-tag">🎤 Interview · Field Report</p>
+          <h3 class="video-title">Segment 02</h3>
+          <p class="video-source">Rania Ibtihal Meguellati</p>
+        </div>
+      </div>
+
+      <!-- VIDEO CARD 3 -->
+      <div class="video-card reveal reveal-delay-2" onclick="openModal(2)">
+        <div class="video-thumb">
+          <video src="https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0041.mp4" preload="metadata" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+          <div class="video-overlay">
+            <div class="play-btn">
+              <svg width="16" height="18" viewBox="0 0 16 18"><path d="M2 1l13 8-13 8V1z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <p class="video-tag">📰 Journalism · KAWALIS</p>
+          <h3 class="video-title">Segment 03</h3>
+          <p class="video-source">Rania Ibtihal Meguellati</p>
+        </div>
+      </div>
+
+      <!-- VIDEO CARD 4 -->
+      <div class="video-card reveal" onclick="openModal(3)">
+        <div class="video-thumb">
+          <video src="https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0043.mp4" preload="metadata" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+          <div class="video-overlay">
+            <div class="play-btn">
+              <svg width="16" height="18" viewBox="0 0 16 18"><path d="M2 1l13 8-13 8V1z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <p class="video-tag">🎬 Event · Coverage</p>
+          <h3 class="video-title">Segment 04</h3>
+          <p class="video-source">Rania Ibtihal Meguellati</p>
+        </div>
+      </div>
+
+      <!-- VIDEO CARD 5 -->
+      <div class="video-card reveal reveal-delay-1" onclick="openModal(4)">
+        <div class="video-thumb">
+          <video src="https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0044.mp4" preload="metadata" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
+          <div class="video-overlay">
+            <div class="play-btn">
+              <svg width="16" height="18" viewBox="0 0 16 18"><path d="M2 1l13 8-13 8V1z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="video-info">
+          <p class="video-tag">📡 Radio · Production</p>
+          <h3 class="video-title">Segment 05</h3>
+          <p class="video-source">Rania Ibtihal Meguellati</p>
+        </div>
+      </div>
+
+      <!-- PLACEHOLDER (invisible — keeps grid even) -->
+      <div style="visibility:hidden;" class="reveal reveal-delay-2">
+        <div class="video-thumb"></div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-label reveal">Education & Credentials</div>
+    <h2 class="section-title reveal">Foundations of<br><em>Excellence</em></h2>
+
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <p class="edu-degree">Master's Degree</p>
+        <p class="edu-field">Mass Communication & New Media</p>
+        <p class="edu-school">University of Setif 2 · Algeria</p>
+        <p class="edu-year">2023</p>
+      </div>
+      <div class="edu-card reveal reveal-delay-1">
+        <p class="edu-degree">Bachelor's Degree</p>
+        <p class="edu-field">Media & Communication</p>
+        <p class="edu-school">University of Setif 2 · Algeria</p>
+        <p class="edu-year">2020</p>
+      </div>
+    </div>
+
+    <p class="certs-title reveal">Professional Certificates</p>
+    <div class="certs-list reveal">
+      <div class="cert-badge">🎬 Video Editing & Photography</div>
+      <div class="cert-badge">📰 Journalistic Articles</div>
+      <div class="cert-badge">🏆 Comprehensive Journalist</div>
+    </div>
+
+    <div class="thesis-block reveal">
+      <p class="thesis-label">Master's Thesis — High Distinction</p>
+      <p class="thesis-title">"American Public Diplomacy on Algerian Television: A Descriptive and Analytical Study of the Program 'Andi Helm' — Ennahar TV"</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label reveal" style="justify-content:center;">Get in Touch</div>
+    <h2 class="section-title reveal" style="text-align:center;">Let's Tell<br><em>Stories Together</em></h2>
+    <p class="contact-tagline reveal">Open to journalism opportunities, radio collaborations, and media projects across the MENA region and beyond.</p>
+
+    <div class="contact-links reveal">
+      <a href="mailto:raniameg688@gmail.com" class="contact-item">
+        <span class="ci-label">✉ Email</span>
+        <span class="ci-value">raniameg688@gmail.com</span>
+      </a>
+      <a href="tel:+97470084162" class="contact-item">
+        <span class="ci-label">📞 Phone</span>
+        <span class="ci-value">+974 70 08 41 62</span>
+      </a>
+      <div class="contact-item">
+        <span class="ci-label">📍 Location</span>
+        <span class="ci-value">El Saad, Doha — Qatar</span>
+      </div>
+    </div>
+
+    <a href="mailto:raniameg688@gmail.com" class="btn btn-gold" style="margin-bottom:4rem;">Send a Message</a>
+
+    <div class="big-name reveal">Rania</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Rania Ibtihal Meguellati</p>
+  <p>Journalist · Radio Presenter · Doha, Qatar</p>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal, .timeline-item').forEach(el => observer.observe(el));
+
+  // ── VIDEO MODAL ──
+  const videos = [
+    { src: 'https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0039.mp4', label: 'Segment 01 · Broadcast' },
+    { src: 'https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0040.mp4', label: 'Segment 02 · Interview' },
+    { src: 'https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0041.mp4', label: 'Segment 03 · Journalism' },
+    { src: 'https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0043.mp4', label: 'Segment 04 · Event Coverage' },
+    { src: 'https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0044.mp4', label: 'Segment 05 · Radio Production' },
+  ];
+  let currentVideo = 0;
+  const modal = document.getElementById('videoModal');
+  const modalVideo = document.getElementById('modalVideo');
+  const modalTitle = document.getElementById('modalTitle');
+
+  window.openModal = function(index) {
+    currentVideo = index;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    loadModalVideo();
+  };
+  window.closeModal = function() {
+    modal.style.display = 'none';
+    modalVideo.pause();
+    modalVideo.src = '';
+    document.body.style.overflow = '';
+  };
+  window.nextVideo = function() {
+    currentVideo = (currentVideo + 1) % videos.length;
+    loadModalVideo();
+  };
+  window.prevVideo = function() {
+    currentVideo = (currentVideo - 1 + videos.length) % videos.length;
+    loadModalVideo();
+  };
+  function loadModalVideo() {
+    modalVideo.src = videos[currentVideo].src;
+    modalTitle.textContent = videos[currentVideo].label;
+    modalVideo.play().catch(() => {});
+  }
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => {
+    if (modal.style.display === 'flex') {
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowRight') nextVideo();
+      if (e.key === 'ArrowLeft') prevVideo();
+    }
+  });
+</script>
+</body>
+</html>
