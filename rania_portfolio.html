@@ -1010,14 +1010,22 @@
     <h2 class="section-title reveal">Hear Me <em>In Action</em></h2>
     <p class="portfolio-intro reveal">A selection of my broadcast work, radio segments, field reports, and media productions.</p>
 
+    <!-- VIDEO LIGHTBOX MODAL -->
+    <div id="videoModal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(10,8,6,0.96);align-items:center;justify-content:center;flex-direction:column;gap:1.2rem;">
+      <button onclick="closeModal()" style="position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:var(--gold);font-size:2rem;cursor:pointer;font-family:'Playfair Display',serif;line-height:1;">✕</button>
+      <div id="modalTitle" style="font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;"></div>
+      <video id="modalVideo" controls playsinline style="max-width:90vw;max-height:78vh;width:100%;border:1px solid var(--rule);background:#000;outline:none;"></video>
+      <div style="display:flex;gap:1.5rem;">
+        <button onclick="prevVideo()" style="background:none;border:1px solid var(--rule);color:var(--warm);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:pointer;transition:border-color 0.3s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--rule)'">← Prev</button>
+        <button onclick="nextVideo()" style="background:none;border:1px solid var(--rule);color:var(--warm);font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.5rem 1.2rem;cursor:pointer;transition:border-color 0.3s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--rule)'">Next →</button>
+      </div>
+    </div>
+
     <div class="videos-grid">
-      <!-- VIDEO CARD 1 — Replace src with your GitHub raw video URL -->
-      <div class="video-card reveal">
+      <!-- VIDEO CARD 1 -->
+      <div class="video-card reveal" onclick="openModal(0)">
         <div class="video-thumb">
-          <div class="video-placeholder">
-            <span class="ph-icon">🎙️</span>
-            <span class="ph-text">Radio Segment</span>
-          </div>
+          <video src="https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0039.mp4" preload="metadata" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
           <div class="video-overlay">
             <div class="play-btn">
               <svg width="16" height="18" viewBox="0 0 16 18"><path d="M2 1l13 8-13 8V1z"/></svg>
@@ -1025,19 +1033,16 @@
           </div>
         </div>
         <div class="video-info">
-          <p class="video-tag">Radio · ASIA Radio</p>
-          <h3 class="video-title">Live Broadcast Segment</h3>
-          <p class="video-source">Add your GitHub video link here</p>
+          <p class="video-tag">🎙️ Broadcast · Media Work</p>
+          <h3 class="video-title">Segment 01</h3>
+          <p class="video-source">Rania Ibtihal Meguellati</p>
         </div>
       </div>
 
       <!-- VIDEO CARD 2 -->
-      <div class="video-card reveal reveal-delay-1">
+      <div class="video-card reveal reveal-delay-1" onclick="openModal(1)">
         <div class="video-thumb">
-          <div class="video-placeholder">
-            <span class="ph-icon">🎤</span>
-            <span class="ph-text">Interview</span>
-          </div>
+          <video src="https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0040.mp4" preload="metadata" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
           <div class="video-overlay">
             <div class="play-btn">
               <svg width="16" height="18" viewBox="0 0 16 18"><path d="M2 1l13 8-13 8V1z"/></svg>
@@ -1045,19 +1050,16 @@
           </div>
         </div>
         <div class="video-info">
-          <p class="video-tag">Interview · Field Report</p>
-          <h3 class="video-title">Featured Guest Interview</h3>
-          <p class="video-source">Add your GitHub video link here</p>
+          <p class="video-tag">🎤 Interview · Field Report</p>
+          <h3 class="video-title">Segment 02</h3>
+          <p class="video-source">Rania Ibtihal Meguellati</p>
         </div>
       </div>
 
       <!-- VIDEO CARD 3 -->
-      <div class="video-card reveal reveal-delay-2">
+      <div class="video-card reveal reveal-delay-2" onclick="openModal(2)">
         <div class="video-thumb">
-          <div class="video-placeholder">
-            <span class="ph-icon">📰</span>
-            <span class="ph-text">Multimedia Report</span>
-          </div>
+          <video src="https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0041.mp4" preload="metadata" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
           <div class="video-overlay">
             <div class="play-btn">
               <svg width="16" height="18" viewBox="0 0 16 18"><path d="M2 1l13 8-13 8V1z"/></svg>
@@ -1065,19 +1067,16 @@
           </div>
         </div>
         <div class="video-info">
-          <p class="video-tag">Journalism · KAWALIS</p>
-          <h3 class="video-title">Field Report & Coverage</h3>
-          <p class="video-source">Add your GitHub video link here</p>
+          <p class="video-tag">📰 Journalism · KAWALIS</p>
+          <h3 class="video-title">Segment 03</h3>
+          <p class="video-source">Rania Ibtihal Meguellati</p>
         </div>
       </div>
 
       <!-- VIDEO CARD 4 -->
-      <div class="video-card reveal">
+      <div class="video-card reveal" onclick="openModal(3)">
         <div class="video-thumb">
-          <div class="video-placeholder">
-            <span class="ph-icon">🎬</span>
-            <span class="ph-text">Event Coverage</span>
-          </div>
+          <video src="https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0043.mp4" preload="metadata" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
           <div class="video-overlay">
             <div class="play-btn">
               <svg width="16" height="18" viewBox="0 0 16 18"><path d="M2 1l13 8-13 8V1z"/></svg>
@@ -1085,19 +1084,16 @@
           </div>
         </div>
         <div class="video-info">
-          <p class="video-tag">Video · Event</p>
-          <h3 class="video-title">Event Coverage & Reporting</h3>
-          <p class="video-source">Add your GitHub video link here</p>
+          <p class="video-tag">🎬 Event · Coverage</p>
+          <h3 class="video-title">Segment 04</h3>
+          <p class="video-source">Rania Ibtihal Meguellati</p>
         </div>
       </div>
 
       <!-- VIDEO CARD 5 -->
-      <div class="video-card reveal reveal-delay-1">
+      <div class="video-card reveal reveal-delay-1" onclick="openModal(4)">
         <div class="video-thumb">
-          <div class="video-placeholder">
-            <span class="ph-icon">🎙️</span>
-            <span class="ph-text">Podcast / Show</span>
-          </div>
+          <video src="https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0044.mp4" preload="metadata" muted playsinline style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>
           <div class="video-overlay">
             <div class="play-btn">
               <svg width="16" height="18" viewBox="0 0 16 18"><path d="M2 1l13 8-13 8V1z"/></svg>
@@ -1105,38 +1101,20 @@
           </div>
         </div>
         <div class="video-info">
-          <p class="video-tag">Podcast · Production</p>
-          <h3 class="video-title">Podcast Episode</h3>
-          <p class="video-source">Add your GitHub video link here</p>
+          <p class="video-tag">📡 Radio · Production</p>
+          <h3 class="video-title">Segment 05</h3>
+          <p class="video-source">Rania Ibtihal Meguellati</p>
         </div>
       </div>
 
-      <!-- VIDEO CARD 6 -->
-      <div class="video-card reveal reveal-delay-2">
-        <div class="video-thumb">
-          <div class="video-placeholder">
-            <span class="ph-icon">📡</span>
-            <span class="ph-text">Studio Session</span>
-          </div>
-          <div class="video-overlay">
-            <div class="play-btn">
-              <svg width="16" height="18" viewBox="0 0 16 18"><path d="M2 1l13 8-13 8V1z"/></svg>
-            </div>
-          </div>
-        </div>
-        <div class="video-info">
-          <p class="video-tag">Studio · Production</p>
-          <h3 class="video-title">Studio Recording Session</h3>
-          <p class="video-source">https://raw.githubusercontent.com/raniameg6/blob/main/VID-20260430-WA0039.mp4</p>
+      <!-- PLACEHOLDER (invisible — keeps grid even) -->
+      <div style="visibility:hidden;" class="reveal reveal-delay-2">
+        <div class="video-thumb"></div>
         </div>
       </div>
     </div>
 
-    <!-- GITHUB NOTICE -->
-    <div class="github-notice reveal">
-      <span class="gh-icon">🔗</span>
-      <p>Videos are hosted on <strong>GitHub</strong>. To add them, replace the placeholder cards above with <code>&lt;video src="YOUR_GITHUB_RAW_URL"&gt;</code> or embed them directly. Just share your GitHub links and I'll integrate them instantly.</p>
-    </div>
+
   </div>
 </section>
 
@@ -1227,12 +1205,51 @@
 
   document.querySelectorAll('.reveal, .timeline-item').forEach(el => observer.observe(el));
 
-  // Video card click — opens video in new tab if src exists
-  document.querySelectorAll('.video-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const video = card.querySelector('video');
-      if (video && video.src) window.open(video.src, '_blank');
-    });
+  // ── VIDEO MODAL ──
+  const videos = [
+    { src: 'https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0039.mp4', label: 'Segment 01 · Broadcast' },
+    { src: 'https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0040.mp4', label: 'Segment 02 · Interview' },
+    { src: 'https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0041.mp4', label: 'Segment 03 · Journalism' },
+    { src: 'https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0043.mp4', label: 'Segment 04 · Event Coverage' },
+    { src: 'https://raw.githubusercontent.com/raniameg6/rania_meguelatti/main/VID-20260430-WA0044.mp4', label: 'Segment 05 · Radio Production' },
+  ];
+  let currentVideo = 0;
+  const modal = document.getElementById('videoModal');
+  const modalVideo = document.getElementById('modalVideo');
+  const modalTitle = document.getElementById('modalTitle');
+
+  window.openModal = function(index) {
+    currentVideo = index;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    loadModalVideo();
+  };
+  window.closeModal = function() {
+    modal.style.display = 'none';
+    modalVideo.pause();
+    modalVideo.src = '';
+    document.body.style.overflow = '';
+  };
+  window.nextVideo = function() {
+    currentVideo = (currentVideo + 1) % videos.length;
+    loadModalVideo();
+  };
+  window.prevVideo = function() {
+    currentVideo = (currentVideo - 1 + videos.length) % videos.length;
+    loadModalVideo();
+  };
+  function loadModalVideo() {
+    modalVideo.src = videos[currentVideo].src;
+    modalTitle.textContent = videos[currentVideo].label;
+    modalVideo.play().catch(() => {});
+  }
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => {
+    if (modal.style.display === 'flex') {
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowRight') nextVideo();
+      if (e.key === 'ArrowLeft') prevVideo();
+    }
   });
 </script>
 </body>
